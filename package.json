@@ -7,7 +7,7 @@
 		"build": "next build",
 		"start": "next start",
 		"lint": "next lint",
-		"format": "prettier --ignore-path .gitignore --write ."
+		"format": "prettier --ignore-path .gitignore --write ./src"
 	},
 	"dependencies": {
 		"next": "14.1.3",
