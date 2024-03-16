@@ -24,9 +24,7 @@ export default function Cell({
 				return row.map((cell, c) => {
 					if (cellIndex === c) {
 						if (cell === "") {
-							const newPlayer = player === "X" ? "O" : "X";
-							setPlayer(newPlayer);
-							return newPlayer;
+							return player;
 						}
 					}
 					return cell;
@@ -35,6 +33,9 @@ export default function Cell({
 			return row;
 		});
 		setBoard(newBoard);
+		// after a cell is clicked, and board repainted, the player is switched
+		const newPlayer = player === "X" ? "O" : "X";
+		setPlayer(newPlayer);
 	};
 
 	return (
