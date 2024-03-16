@@ -39,12 +39,14 @@ export default function Cell({
 
 	return (
 		<button
-			className="w-[80px] h-[80px] bg-red-300 text-black text-4xl flex justify-center items-center cursor-pointer focus:outline-none focus:border-none border-none disabled:opacity-30"
+			className="w-[80px] h-[80px] bg-black text-4xl flex justify-center items-center cursor-pointer focus:outline-none focus:border-none border-none opacity-100 disabled:opacity-50 disabled:cursor-not-allowed"
 			key={`${rowIndex}${cellIndex}`}
 			onClick={() => handleClickCell(rowIndex, cellIndex)}
 			disabled={!isPlaying}
 		>
-			{cell}
+			<span className={cell === "X" ? "text-blue-700" : "text-red-600"}>
+				{cell}
+			</span>
 		</button>
 	);
 }

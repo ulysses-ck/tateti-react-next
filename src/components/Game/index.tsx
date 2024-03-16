@@ -108,7 +108,7 @@ export default function Game() {
 	};
 	return (
 		<section>
-			<h1>Tic tac toe</h1>
+			<h1 className="text-center text-2xl">Tic tac toe</h1>
 			<Board
 				board={board}
 				player={player}
@@ -116,9 +116,21 @@ export default function Game() {
 				setPlayer={setPlayer}
 				isPlaying={isPlaying}
 			/>
-			<div>
-				<button onClick={handleClickPlay}>Play!</button>
-				<button onClick={handleClickReset}>Reset</button>
+			<div className="flex justify-between py-2">
+				<button
+					onClick={handleClickPlay}
+					disabled={isPlaying}
+					className="bg-green-800 p-2 rounded-md disabled:bg-green-500 disabled:cursor-not-allowed disabled:opacity-50"
+				>
+					Play!
+				</button>
+				<button
+					onClick={handleClickReset}
+					disabled={!isPlaying}
+					className="bg-red-800 p-2 rounded-md disabled:bg-red-500 disabled:cursor-not-allowed disabled:opacity-50"
+				>
+					Reset
+				</button>
 			</div>
 		</section>
 	);
