@@ -6,11 +6,13 @@ export default function Board({
 	player,
 	setBoard,
 	setPlayer,
+	isPlaying,
 }: {
 	board: string[][];
 	player: string;
 	setBoard: (board: string[][]) => void;
 	setPlayer: (player: string) => void;
+	isPlaying: boolean;
 }) {
 	return (
 		<div className="grid grid-cols-3 grid-row-3 gap-2 bg-black w-fit h-fit">
@@ -18,6 +20,7 @@ export default function Board({
 				return row.map((cell, cellIndex) => {
 					return (
 						<Cell
+							isPlaying={isPlaying}
 							key={`${rowIndex}${cellIndex}`}
 							board={board}
 							rowIndex={rowIndex}

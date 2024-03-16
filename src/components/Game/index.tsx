@@ -13,6 +13,9 @@ export default function Game() {
 		["", "", ""],
 	]);
 
+	// state to handle play of the game
+	const [isPlaying, setIsPlaying] = useState(false);
+
 	// player is either "X" or "O"
 	const [player, setPlayer] = useState("X");
 
@@ -91,6 +94,18 @@ export default function Game() {
 		checkGameOver(board, player);
 	}, [board, player]);
 
+	const handleClickPlay = () => {
+		setIsPlaying(true);
+	};
+
+	const handleClickReset = () => {
+		setBoard([
+			["", "", ""],
+			["", "", ""],
+			["", "", ""],
+		]);
+		setIsPlaying(false);
+	};
 	return (
 		<section>
 			<h1>Tic tac toe</h1>
@@ -99,7 +114,12 @@ export default function Game() {
 				player={player}
 				setBoard={setBoard}
 				setPlayer={setPlayer}
+				isPlaying={isPlaying}
 			/>
+			<div>
+				<button onClick={handleClickPlay}>Play!</button>
+				<button onClick={handleClickReset}>Reset</button>
+			</div>
 		</section>
 	);
 }

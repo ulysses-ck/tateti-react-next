@@ -7,6 +7,7 @@ export default function Cell({
 	player,
 	setPlayer,
 	setBoard,
+	isPlaying,
 }: {
 	board: string[][];
 	rowIndex: number;
@@ -15,6 +16,7 @@ export default function Cell({
 	player: string;
 	setPlayer: (player: string) => void;
 	setBoard: (board: string[][]) => void;
+	isPlaying: boolean;
 }) {
 	const handleClickCell = (rowIndex: number, cellIndex: number) => {
 		const newBoard = board.map((row, r) => {
@@ -36,12 +38,13 @@ export default function Cell({
 	};
 
 	return (
-		<div
-			className="w-[80px] h-[80px] bg-red-300 text-black text-4xl flex justify-center items-center cursor-pointer"
+		<button
+			className="w-[80px] h-[80px] bg-red-300 text-black text-4xl flex justify-center items-center cursor-pointer focus:outline-none focus:border-none border-none disabled:opacity-30"
 			key={`${rowIndex}${cellIndex}`}
 			onClick={() => handleClickCell(rowIndex, cellIndex)}
+			disabled={!isPlaying}
 		>
 			{cell}
-		</div>
+		</button>
 	);
 }
