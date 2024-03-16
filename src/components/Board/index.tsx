@@ -38,7 +38,7 @@ export default function Board() {
 				return row.map((cell, cellIndex) => {
 					return (
 						<div
-							className="w-[80px] h-[80px] bg-red-300"
+							className="w-[80px] h-[80px] bg-red-300 text-black text-4xl flex justify-center items-center cursor-pointer"
 							key={`${rowIndex}${cellIndex}`}
 							onClick={() => handleClickCell(rowIndex, cellIndex)}
 						>
