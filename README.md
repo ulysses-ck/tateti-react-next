@@ -8,6 +8,9 @@ Built with:
 - [Eslint](https://eslint.org/)
 - [TypeScript](https://typescriptlang.org/)
 
+![chrome_P9eK40HfXB](https://github.com/ulysses-ck/tateti-react-next/assets/50756389/00a0a594-bd25-465b-8521-2131f89bb941)
+
+
 ## Getting Started
 Clone repo
 ```
