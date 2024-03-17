@@ -108,7 +108,9 @@ export default function Game() {
 	};
 	return (
 		<section>
-			<h1 className="text-center text-2xl">Tic tac toe</h1>
+			<h1 className="text-center text-2xl">
+				{!isPlaying ? "Board" : `Its ${player}'s turn!`}
+			</h1>
 			<Board
 				board={board}
 				player={player}
