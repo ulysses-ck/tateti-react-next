@@ -12,7 +12,7 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang="en">
-			<body>
+			<body className="min-h-screen min-w-screen flex flex-col justify-between">
 				<Navbar />
 				{children}
 				<Footer />
