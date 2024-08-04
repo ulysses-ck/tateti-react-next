@@ -1,10 +1,10 @@
 export default function GithubSVG({
 	wSize,
 	hSize,
-}: {
+}: Readonly<{
 	wSize: string;
 	hSize: string;
-}) {
+}>) {
 	return (
 		<div style={{ width: wSize, height: hSize }}>
 			<svg
@@ -22,9 +22,9 @@ export default function GithubSVG({
 				<g
 					id="Page-1"
 					stroke="none"
-					stroke-width="1"
+					strokeWidth="1"
 					fill="none"
-					fill-rule="evenodd"
+					fillRule="evenodd"
 				>
 					<g
 						id="Dribbble-Light-Preview"
