@@ -7,7 +7,7 @@ import Board from "../Board";
 
 export default function Game() {
 	// board is a 3x3 grid of cells
-	const [board, setBoard] = useState([
+	const [board, setBoard] = useState<string[][]>([
 		["", "", ""],
 		["", "", ""],
 		["", "", ""],
@@ -36,7 +36,8 @@ export default function Game() {
 	};
 
 	useEffect(() => {
-		const checkWinner = (board: string[][], player: string) => {
+		const checkWinner = () => {
+			console.table(board);
 			// check rows
 			for (let i = 0; i < 3; i++) {
 				if (
@@ -47,7 +48,10 @@ export default function Game() {
 						board[1][i] === player &&
 						board[2][i] === player)
 				) {
-					return true;
+					console.log("win by rows or columns");
+					console.log(`${player} wins`);
+					setIsPlaying(false);
+					setWinner(player);
 				}
 			}
 			// check diagonals
@@ -59,16 +63,19 @@ export default function Game() {
 					board[1][1] === player &&
 					board[2][0] === player)
 			) {
-				return true;
+				console.log("win by diagonals");
+				console.log(`${player} wins`);
+				setIsPlaying(false);
+				setWinner(player);
 			}
 			return false;
 		};
 
 		// check if the game is a draw
-		const checkDraw = (board: string[][]) => {
+		const checkDraw = () => {
 			for (let i = 0; i < 3; i++) {
 				for (let j = 0; j < 3; j++) {
-					if (board[i][j] === "") {
+					if (board[i][j] == "") {
 						return false;
 					}
 				}
@@ -77,17 +84,23 @@ export default function Game() {
 		};
 
 		// check if the game is over
-		const checkGameOver = (board: string[][], player: string) => {
-			if (checkWinner(board, player)) {
-				setIsPlaying(false);
-				setWinner(player);
-			} else if (checkDraw(board)) {
+		const checkGameOver = () => {
+			console.log("checking game");
+			checkWinner();
+
+			if (checkDraw()) {
+				console.log(`Draw game`);
 				setIsPlaying(false);
 				setWinner("Draw");
 			}
 		};
 
-		checkGameOver(board, player);
+		checkGameOver();
+
+		return () => {
+			setIsPlaying(true);
+			setWinner("");
+		};
 	}, [board, player]);
 
 	return (

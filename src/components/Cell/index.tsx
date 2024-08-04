@@ -1,4 +1,7 @@
 "use client";
+
+import { Dispatch, SetStateAction } from "react";
+
 export default function Cell({
 	board,
 	rowIndex,
@@ -14,25 +17,28 @@ export default function Cell({
 	cellIndex: number;
 	cell: string;
 	player: string;
-	setPlayer: (player: string) => void;
-	setBoard: (board: string[][]) => void;
+	setPlayer: Dispatch<SetStateAction<string>>;
+	setBoard: Dispatch<SetStateAction<string[][]>>;
 	isPlaying: boolean;
 }) {
 	const handleClickCell = (rowIndex: number, cellIndex: number) => {
-		const newBoard = board.map((row, r) => {
-			if (rowIndex === r) {
-				return row.map((cell, c) => {
-					if (cellIndex === c) {
-						if (cell === "") {
-							return player;
+		setBoard((prevBoard) => {
+			const newBoard = prevBoard.map((row, r) => {
+				if (rowIndex === r) {
+					return row.map((cell, c) => {
+						if (cellIndex === c) {
+							if (cell === "") {
+								return player;
+							}
 						}
-					}
-					return cell;
-				});
-			}
-			return row;
+						return cell;
+					});
+				}
+				return row;
+			});
+
+			return newBoard;
 		});
-		setBoard(newBoard);
 		// after a cell is clicked, and board repainted, the player is switched
 		const newPlayer = player === "X" ? "O" : "X";
 		setPlayer(newPlayer);
